@@ -14,4 +14,13 @@ const networkConfig: NetworkConfigg = {
     }
 };
 
-export { networkConfig };
+const developmentChain = ['hardhat', "localhost"]
+const DECIMALS = 8
+const INITIAL_ANSWER = 200000000000
+
+export { 
+    networkConfig, 
+    developmentChain, 
+    DECIMALS,
+    INITIAL_ANSWER,
+};

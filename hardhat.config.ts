@@ -45,10 +45,11 @@ const config: HardhatUserConfig = {
   },
   solidity: {
     compilers: [
+      { version: "0.6.12" },
       { version: "0.8.28" },
-      { version: "0.6.0" },
       // { version: "0.6.0" },
       // we can add more compiler versions like above
+      // NOTE: never use '^' or '~' in version specification. write the exact version.
     ]
   },
 };

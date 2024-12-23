@@ -21,7 +21,6 @@ module.exports = async (hre: HardhatRuntimeEnvironment) => {
             log: true,
             args: [DECIMALS, INITIAL_ANSWER]
         })
-        
         log("Mock deployed!")
         log("------------------------------------------")
     }

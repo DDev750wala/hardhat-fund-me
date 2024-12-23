@@ -4,6 +4,7 @@ import "@nomicfoundation/hardhat-toolbox";
 require("hardhat-deploy")
 require("hardhat-gas-reporter")
 require("solidity-coverage")
+require("@nomicfoundation/hardhat-verify")
 // require("@nomiclabs/hardhat-etherscan")
 require("dotenv").config()
 

@@ -31,7 +31,8 @@ module.exports = async (hre: HardhatRuntimeEnvironment) => {
     const fundMe = await deploy("FundMe", {
         from: deployer, // the address in this will be consider as the owner of the contract
         args: args, // we have to put pricefeed here, that we added in contructor in that contract.
-        log: true
+        log: true,
+        waitConfirmations: 1
     })
 
     if(!developmentChain.includes(network.name) && process.env.ETHERSCAN_API_KEY) {

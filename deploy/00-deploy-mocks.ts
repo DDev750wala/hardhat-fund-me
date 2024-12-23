@@ -11,7 +11,7 @@ module.exports = async (hre: HardhatRuntimeEnvironment) => {
     const { deployments, getNamedAccounts } = hre
     const { deploy, log } = deployments
     const { deployer } = await getNamedAccounts()
-    const chainId = network.config.chainId
+    // const chainId = network.config.chainId
 
     if (developmentChain.includes(network.name)) {
         log("Local network detected! Deploying mock");

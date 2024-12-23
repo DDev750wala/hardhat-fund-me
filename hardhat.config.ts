@@ -20,16 +20,15 @@ const config: HardhatUserConfig = {
     },
     sepolia: {
       url: SEPOLIA_RPC_URL,
-      accounts: {
-        mnemonic: MNEMNONIC
-      }
+      accounts: [process.env.METAMASK_PRIVATE_KEY as string],
+      chainId: 11155111,
     },
   },
   etherscan: {
     apiKey: ETHERSCAN_API_KEY
   },
   gasReporter: {
-    enabled: true,
+    enabled: false,
     currency: "USD",
     outputFile: "gas-reporter.txt",
     noColors: true,

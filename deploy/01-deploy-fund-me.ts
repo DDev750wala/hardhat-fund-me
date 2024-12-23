@@ -1,6 +1,7 @@
 import { network } from "hardhat"
 import "hardhat-deploy"
 import { HardhatRuntimeEnvironment } from "hardhat/types"
+import { verify } from "../utils/verify"
 
 import { developmentChain, networkConfig } from "../helper-hardhat-config";
 
@@ -26,11 +27,18 @@ module.exports = async (hre: HardhatRuntimeEnvironment) => {
 
     // what happens when to change the chains?
     // when going for localhost or hardhat network we want to use a mock.
+    const args = [ethUsdPriceFeedAddress]
     const fundMe = await deploy("FundMe", {
         from: deployer, // the address in this will be consider as the owner of the contract
-        args: [ethUsdPriceFeedAddress], // we have to put pricefeed here, that we added in contructor in that contract.
+        args: args, // we have to put pricefeed here, that we added in contructor in that contract.
         log: true
     })
+
+    if(!developmentChain.includes(network.name) && process.env.ETHERSCAN_API_KEY) {
+        // verify the contract on etherscan
+        await verify(fundMe.address, args)
+    }
+
     log("------------------------------------------------------")
 }
 

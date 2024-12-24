@@ -21,6 +21,7 @@ module.exports = async (hre: HardhatRuntimeEnvironment) => {
     if (developmentChain.includes(network.name)) {
         const ethUsdAggregator = await deployments.get("MockV3Aggregator")
         ethUsdPriceFeedAddress = ethUsdAggregator.address
+        log(`Default Mock deployed at ${ethUsdPriceFeedAddress}`)
     } else {
         ethUsdPriceFeedAddress = networkConfig[chainId as number]?.ethUsdPriceFeed
     }
@@ -32,7 +33,8 @@ module.exports = async (hre: HardhatRuntimeEnvironment) => {
         from: deployer, // the address in this will be consider as the owner of the contract
         args: args, // we have to put pricefeed here, that we added in contructor in that contract.
         log: true,
-        waitConfirmations: 1
+        waitConfirmations: 1,
+        contract: "FundMe",
     })
 
     if (!developmentChain.includes(network.name) && process.env.ETHERSCAN_API_KEY) {

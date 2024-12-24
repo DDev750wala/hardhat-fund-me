@@ -11,7 +11,7 @@ module.exports = async (hre: HardhatRuntimeEnvironment) => {
     const { deploy, log } = deployments
     const { deployer } = await getNamedAccounts()
     const chainId = network.config.chainId
-    
+
     // const address = "0x694AA1769357215DE4FAC081bf1f309aDC325306"
     // we want to use the mechanism that we will change the networks as per chain-id.
     // if chainId is Y then feed address will be X, that way.
@@ -35,7 +35,7 @@ module.exports = async (hre: HardhatRuntimeEnvironment) => {
         waitConfirmations: 1
     })
 
-    if(!developmentChain.includes(network.name) && process.env.ETHERSCAN_API_KEY) {
+    if (!developmentChain.includes(network.name) && process.env.ETHERSCAN_API_KEY) {
         // verify the contract on etherscan
         await verify(fundMe.address, args)
     }

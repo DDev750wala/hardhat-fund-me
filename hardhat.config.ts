@@ -1,11 +1,11 @@
 import { HardhatUserConfig } from "hardhat/config";
-// import { network } from "hardhat";
 import "@nomicfoundation/hardhat-toolbox";
+// import "@nomiclabs/hardhat-waffle"
+// require("@nomiclabs/hardhat-etherscan")
 require("hardhat-deploy")
 require("hardhat-gas-reporter")
 require("solidity-coverage")
 require("@nomicfoundation/hardhat-verify")
-// require("@nomiclabs/hardhat-etherscan")
 require("dotenv").config()
 
 const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL

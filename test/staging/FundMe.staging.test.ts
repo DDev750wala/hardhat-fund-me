@@ -2,6 +2,7 @@ import { deployments, ethers, getNamedAccounts, network } from "hardhat";
 import { FundMe } from "../../typechain-types/contracts/FundMe"
 import { developmentChain } from "../../helper-hardhat-config";
 import { assert } from "chai"
+import { log } from "console";
 
 
 developmentChain.includes(network.name)
@@ -17,14 +18,16 @@ developmentChain.includes(network.name)
         })
 
         it("allows people to fund and withdraw", async function () {
-            const startingBalance = await ethers.provider.getBalance(fundMe.getAddress())
+            const startingBalance = await ethers.provider.getBalance((await deployments.get("FundMe")).address)
             console.log("Starting balance: ", startingBalance.toString())
+            console.log("The contract address is: ", (await deployments.get("FundMe")).address)
+            
             const fundTxResponse = await fundMe.fund({ value: sendValue })
             await fundTxResponse.wait(1)
             const withdrawTxResponse = await fundMe.cheaperWithdraw()
             await withdrawTxResponse.wait(1)
 
-            const endingBalance = await ethers.provider.getBalance(fundMe.getAddress())
+            const endingBalance = await ethers.provider.getBalance((await deployments.get("FundMe")).address)
 
             console.log("The ending balance is: ", endingBalance.toString());
             

@@ -1,4 +1,5 @@
 {
+  "license": "ISC",
   "devDependencies": {
     "@chainlink/contracts": "0.4.0",
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",

@@ -3,7 +3,7 @@ import { ethers, getNamedAccounts } from "hardhat"
 async function main() {
     const { deployer } = await getNamedAccounts()
     const fundMe = await ethers.getContractAt("FundMe", deployer)
-    console.log(`Got contract FundMe at ${fundMe.address}`)
+    console.log(`Got contract FundMe at ${await fundMe.getAddress()}`)
     console.log("Funding contract...")
     const transactionResponse = await fundMe.fund({
         value: ethers.parseEther("0.1"),

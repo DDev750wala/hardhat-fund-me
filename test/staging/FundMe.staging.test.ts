@@ -3,6 +3,7 @@ import { FundMe } from "../../typechain-types/contracts/FundMe"
 import { developmentChain } from "../../helper-hardhat-config";
 import { assert } from "chai"
 
+
 developmentChain.includes(network.name)
     ? describe.skip
     : describe("FundMe", async function () {
